@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block page_content %}
+<section id="blog-category" class="mx-2" style="margin-top: 100px;">
+  <a href="{% url 'blog_index' %}"><h6><i class="fa-solid fa-hand-point-left"></i> Back to Post Index</h6></a>
+  <div class="col-md-8 offset-md-2">
+      <h1>Category - {{ category | title }}</h1>
+      <hr>
+      {% for post in posts %}
+      <div class="card p-3 shadow mb-3">
+        <h2><a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a></h2>
+        <small>
+            {{ post.created_on.date }} |&nbsp;
+            Categories:&nbsp;
+            {% for category in post.categories.all %}
+            <a href="{% url 'blog_category' category.name %}">
+                {{ category.name }}
+            </a>&nbsp;
+            {% endfor %}
+        </small>
+        <div class="row">
+          <div class="col-sm-2">
+            <img class="mt-3" width="100%" src="{{ MEDIA_URL }}{{ post.image }}">
+          </div>
+          <div class="col-sm-10">
+            <p>{{ post.body.html| safe | slice:":120" }}...</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+</section>
+{% endblock %}

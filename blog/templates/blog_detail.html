@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_content %}
+<section id="blog-post-details" class="mx-2" style="margin-top: 100px;">
+  <div class="col-md-8 offset-md-2">
+      <h1>{{ post.title }}</h1>
+      <small>
+          {{ post.created_on.date }} |&nbsp;
+          Categories:&nbsp;
+          {% for category in post.categories.all %}
+          <a href="{% url 'blog_category' category.name %}">
+              {{ category.name }}
+          </a>&nbsp;
+          {% endfor %}
+      </small>
+      <img width="100%" src="{{ MEDIA_URL }}{{ post.image }}">
+      <p>{{ post.body.html| safe | linebreaks }}</p>
+      <h3>Leave a comment:</h3>
+      <form action="/blog/{{ post.pk }}/" method="post">
+          {% csrf_token %}
+          {{ comment_form | crispy }}
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <h3>Comments:</h3>
+      {% for comment in comments %}
+      <p>
+          On {{comment.created_on.date }}&nbsp;
+          <b>{{ comment.author }}</b> wrote:
+      </p>
+      <p>{{ comment.body }}</p>
+      <hr>
+      {% endfor %}
+  </div>
+</section>
+{% endblock %}

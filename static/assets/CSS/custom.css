@@ -1,0 +1,56 @@
+h1,h2,h3,h4,h5,h6 {
+  font-family:'Montserrat Alternates';
+  font-weight: bold;
+}
+p {
+  font-family: 'Lato';
+}
+section {
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+a {
+  text-decoration: none;
+}
+
+.text-color {
+  color: rgb(55, 57, 69);
+}
+.bg-color {
+  background: rgb(220, 221, 225);
+}
+
+.text-accent-blue {
+  color: rgb(58, 122, 242);
+}
+.bg-accent-blue {
+  background: rgb(58, 122, 242);
+}
+
+.grey-bg {
+  background: rgb(192, 195, 203);
+}
+
+.navbar-toggler:focus {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.navbar-toggler {
+  border: 0 !important;
+  transition: .3s;
+}
+.navbar-toggler:hover {
+  transform: scale(1.1);
+}
+.navbar-brand img {
+  max-height: 40px;
+}
+
+.card {
+  border: none;
+  transition: .3s;
+}
+.card:hover {
+  transform: scale(1.1);
+}

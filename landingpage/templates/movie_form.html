@@ -1,0 +1,19 @@
+{% load crispy_forms_tags %}
+
+<form hx-post="{{ request.path }}" class="modal-content shadow">
+  {% csrf_token %}
+  <div class="modal-header bg-dark text-accent-blue text-center">
+    <h5 class="d-inline modal-title">Subscribe</h5>
+    <button style="border: none;" class="d-inline btn btn-sm btn-outline-secondary" type="button" data-bs-dismiss="modal"><h6>X</h6></button>
+  </div>
+  <div class="modal-body bg-color text-color my-auto">
+    <div class="text-center">
+      <p>Subscribe to stay up to date with the latest Crosoft News.</p>
+      <p>Our Subscribers also recieve exclusive discount codes and promotions!<p>
+    </div>
+    {{ form|crispy }}
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-sm btn-primary w-100 shadow pt-2" type="submit"><h5>Subscribe</h5></button>
+  </div>
+</form>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+<section id="project-details" class="mx-2" style="margin-top: 100px;">
+  <a href="{% url 'projects' %}"><h6><i class="fa-solid fa-hand-point-left"></i> Back to Projects</h6></a>
+  <div class="row text-center offset-lg-2 col-lg-9">
+    <h1>{{ project.title }}</h1>
+    <div class="col-md-4 mb-3">
+        <img src="{{ project.featured_image.url }}" alt="" width="100%">
+    </div>
+    <div class="col-md-8 bg-color p-3 mb-3">
+        <h5 class="text-accent-blue">About the project</h5>
+        <p>We're going to put a summary of some kind here about each project and it's purpose.</p>
+        <h5 class="text-accent-blue">Technology used</h5>
+        <p>{{ project.technology }}</p>
+        <h5 class="text-accent-blue">Project authors</h5>
+        <p>Sung Yung Ho - Director, Bill Baggins - Lead Engineer, Jane Doe - Development Manager</p>
+    </div>
+    <hr>
+    <h5>Description</h5>
+    <p>{{ project.description.html|safe }}</p>
+  </div>
+</section>
+{% endblock %}

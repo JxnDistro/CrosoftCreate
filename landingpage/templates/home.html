@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+
+<section id="introduction" class="bg-color p-3 mb-2" style="margin-top: 100px;">
+    <h2>If you can dream it, we can reach it.</h2>
+    <p>Crosoft Create is a leader in Web Development and Business Software. Our business practices are driven by innovation, creativity, and your dreams.</p>
+    <button hx-get="{% url 'add_movie' %}" hx-target="#dialog">
+      Add a movie
+    </button>
+</section>
+<div class="row text-center bg-dark p-3 text-light">
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Business Websites</h6>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Custom Software</h6>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Inventory Control</h6>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Employee Scheduling</h6>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Invoice Organization</h6>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Artificial Intelligence</h6>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Robotic Prosthesis</h6>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Virtual Reality</h6>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Augmented Reality</h6>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Facial Recognition</h6>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Neural Networks</h6>
+  </div>
+  <div class="col-sm-6 col-md-3 col-lg-2">
+    <h6 class="text-nowrap">Predictive Analysis</h6>
+  </div>
+</div>
+<section id="blog-posts">
+  <div class="row text-center p-3">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <a href="{% url 'blog_detail' latest_post.slug %}"><h3 class="text-nowrap">{{ latest_post.title }}</h3></a>
+            <img style="object-fit: cover;" width="100%" height="200px" src="{{ MEDIA_URL }}{{ latest_post.image }}">
+          </div>
+          {% for post in slide_posts %}
+          <div class="carousel-item">
+            <a href="{% url 'blog_detail' post.slug %}"><h3 class="text-nowrap">{{ post.title }}</h3></a>
+            <img style="object-fit: cover;" width="100%" height="200px" src="{{ MEDIA_URL }}{{ post.image }}">
+          </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon text-dark" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon text-dark" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+  </div>
+</section>
+<section id="featured-projects">
+  <div class="row text-center offset-lg-2 col-lg-9">
+    <h2>Recent Web Projects</h2>
+    <div class="row p-4 offset-lg-1 col-lg-10">
+      <div class="col-md-6">
+        <img width="100%" src="https://www.searchfit.com/wp-content/uploads/2017/10/10-effective-ways-online-presence.png">
+      </div>
+      <div class="col-md-6 my-auto p-3"">
+        <h5>Take a look through some of our most recent projects. Every feature has been tailored for each individual need.</h5>
+      </div>
+    </div>
+    <p>Be it a high conversion sales driven Landing Page, an Employee and Client friendly web communications hub, or something else entirely there is always a way to bring your business into a more efficient future. Be seen among the vastness of the internet with a new web presence!</p>
+    {% for project in projects %}
+      <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 d-flex">
+          <div class="card mb-2 w-100 d-flex flex-column shadow">
+            <a style="text-decoration: none;" href="{% url 'project_detail' project.pk %}">
+              <img style="max-height: 120px; object-fit: cover;" class="card-img-top" src="{{ project.featured_image.url }}">
+              <h5 class="card-title p-3">{{ project.title }}</h5>
+            </a>
+          </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+<section id="featured-research" class="bg-dark text-light">
+  <div class="row text-center offset-lg-2 col-lg-9 p-3">
+    <h2 class="text-accent-blue">Recent R&D</h2>
+    <div class="row p-4 offset-lg-1 col-lg-10">
+      <div class="col-md-6">
+        <img width="100%" src="https://unctad.org/sites/default/files/2022-08/Gender-and-STI_AdobeStock_399026036_800x450.jpg">
+      </div>
+      <div class="col-md-6 my-auto p-3">
+        <h5>Research and Development are at the heart of why we do what we do. We are constantly on the edge of innovation looking for the most efficient and cost effective ways to grow worldwide technologies, as well as our clients businesses.</h5>
+      </div>
+    </div>
+    <p>Don't let the fancy science research fool you though. We love creating beautiful wesites and efficient software for our small business clients. The benefit of partnering with a company like ours is that you get access to all the shiny new features a modern website needs!</p>
+    {% for project in projects %}
+      <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 d-flex">
+          <div class="card mb-2 w-100 d-flex flex-column shadow">
+            <a style="text-decoration: none;" href="{% url 'project_detail' project.pk %}">
+              <img style="max-height: 120px; object-fit: cover;" class="card-img-top" src="{{ project.featured_image.url }}">
+              <h5 class="card-title p-3">{{ project.title }}</h5>
+            </a>
+          </div>
+      </div>
+    {% endfor %}
+    <p></p>
+  </div>
+</section>
+<section id="featured-research">
+  <div class="row text-center offset-lg-2 col-lg-9">
+    <h2>Learning Center</h2>
+    <div class="row p-4 offset-lg-1 col-lg-10">
+      <div class="col-md-6">
+        <img width="100%" src="https://unctad.org/sites/default/files/2022-08/Gender-and-STI_AdobeStock_399026036_800x450.jpg">
+      </div>
+      <div class="col-md-6 my-auto p-3">
+        <h5>Our personal favorite aspects of working with innovative technologies is that we can give back.</h5>
+      </div>
+    </div>
+    <p>We can take all of this new knowledge and experice we've gained and turn it into learning experiences for those who want to know more. After all, the pursuit of knowledge is relatively pointless if you don't share it with everyne else!</p>
+    {% for project in projects %}
+      <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 d-flex">
+          <div class="card mb-2 w-100 d-flex flex-column shadow">
+            <a style="text-decoration: none;" href="{% url 'project_detail' project.pk %}">
+              <img style="max-height: 120px; object-fit: cover;" class="card-img-top" src="{{ project.featured_image.url }}">
+              <h5 class="card-title p-3">{{ project.title }}</h5>
+            </a>
+          </div>
+      </div>
+    {% endfor %}
+    <p></p>
+  </div>
+</section>
+
+{% endblock %}
